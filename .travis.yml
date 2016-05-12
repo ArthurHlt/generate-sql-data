@@ -1,0 +1,22 @@
+language: go
+go:
+- 1.6.2
+install:
+- go get -v -d ./...
+script:
+- echo ""
+after_success:
+- bin/build_all
+deploy:
+  provider: releases
+  api_key:
+    secure: WWS96yQKCNSe6Y3V9wxuZYD+fceQ7Up+XX/X8oaDaH83LFjPV8KmbCu4v8O6yTUqC7iaehFFZYs817lAjbI/tPZDM7uKzHHo2EI0ZYQQ0NzgimAekJj0nDFzRrjJnb7+OHD6zN3v4UeRqRm+UwOTEjNXFYD9bv3aEGZ1FmcZIoS+Am/sJK48RscL6NkQ1C35GYtpJb/5r/z1lNZ7itfVSkD4E71G9kEqVo9/EWnLI4AUM0oYsHaIpKCV/tO1rr3I9BicedaHyvqn2SmzSqCv8k6PBiCuHbDvRGgC5WAnU13Fdajj6fgEj0z9BI+k3lXEsVH2mSGpD639tfXTPPecdxEJkQ3W7BZNWCiGUNkAXcAgHChU3iRBhxBdxbB5FjNhq9ep02TcU9EFNlP4YoRglgtZX28czdUuSKmwcHo5zJw+2jNBjONzxn+PjHwSUASIxt0FZJsB4o8WkGLPLF8n/xTnVUjNi16ntmbClbDXhDpw+8VQZSHFOcacNQMJg/Py1Pa0kQKtp8gHAzGRVikLicYpU9mlD9BavtwIL72lpCtk5ZqJD4BLturop4BMPBFnRICcvjvmySfqOXRB64tMOzs93Erjyol23L7+RnMYInf/82B1IEFDTCZ/LCicjwrixG+QhO6JyVt6yDNFDf69WAiRwu70zpibogNSY/UKlXY=
+  file:
+  - out/generate-sql-data_darwin_amd64
+  - out/generate-sql-data_linux_386
+  - out/generate-sql-data_linux_amd64
+  - out/generate-sql-data_windows_386.exe
+  - out/generate-sql-data_windows_amd64.exe
+  on:
+    tags: true
+    all_branches: true
